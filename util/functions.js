@@ -21,5 +21,17 @@ module.exports = (client) => {
         return new Promise(async (resolve, reject) => {
         fetch(link).then(r => r.json().then(json => resolve(json)))
     })
-    }
+    },
+    client.parseTime = function(ms) {
+      let seconds = Math.floor(ms/1000); milliseconds %= 1000;
+  let minutes = Math.floor(seconds/60); seconds %= 60;
+  let hours = Math.floor(minutes/60); minutes %= 60;
+  let days = Math.floor(hours/24); hours %= 24;
+  let written = false;
+  return (days?(written=true,days+" d"):"")+(written?", ":"")
+      +(hours?(written=true,hours+" h"):"")+(written?", ":"")
+      +(minutes?(written=true,minutes+" m"):"")+(written?", ":"")
+      +(seconds?(written=true,seconds+" s"):"")+(written?", ":"")
+      +(ms?ms+" ms":"");
+    }    
 }
