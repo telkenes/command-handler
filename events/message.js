@@ -1,5 +1,4 @@
 const fs = require('fs');
-var Manager = require('../util/manager.js')
 
 module.exports = {
     run: async (client, message) => {
